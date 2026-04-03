@@ -2,10 +2,28 @@ if (!surface_exists(application_surface)) {
 	exit;
 }
 
-var p = daytime_sample();
-
 var _sw = max(1, surface_get_width(application_surface));
 var _sh = max(1, surface_get_height(application_surface));
+
+if (!surface_exists(surf_lights) || surface_get_width(surf_lights) != _sw || surface_get_height(surf_lights) != _sh) {
+	if (surface_exists(surf_lights)) {
+		surface_free(surf_lights);
+	}
+	surf_lights = surface_create(_sw, _sh);
+}
+
+surface_set_target(surf_lights);
+draw_clear(c_black);
+gpu_set_blendmode(bm_add);
+var _vx = XVIEW;
+var _vy = YVIEW;
+with (obj_light) {
+	draw_sprite_ext(sprite_index, -1, x - _vx, y - _vy, 1, 1, 0, c_white, alpha);
+}
+gpu_set_blendmode(bm_normal);
+surface_reset_target();
+
+var p = daytime_sample();
 
 var _buf_w = window_get_width();
 var _buf_h = window_get_height();
@@ -37,8 +55,10 @@ if (_t >= dayTint_t0 && _t < dayTint_t1) {
 }
 shader_set_uniform_f(shader_get_uniform(sh_daytime_post, "u_palette_strength"), _ps);
 
-var _samp = shader_get_sampler_index(sh_daytime_post, "u_palette");
-texture_set_stage(_samp, sprite_get_texture(spr_palette, 0));
+var _samp_pal = shader_get_sampler_index(sh_daytime_post, "u_palette");
+var _samp_lit = shader_get_sampler_index(sh_daytime_post, "u_light_map");
+texture_set_stage(_samp_pal, sprite_get_texture(spr_palette, 0));
+texture_set_stage(_samp_lit, surface_get_texture(surf_lights));
 
 draw_surface_ext(application_surface, _ox, _oy, _scale, _scale, 0, c_white, 1);
 

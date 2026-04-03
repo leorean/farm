@@ -11,8 +11,9 @@
 #macro L_UI			0400 // mouse, menus, etc.
 #macro L_HUD		0500 // any in-game display
 #macro L_EFFECTS	1000
-#macro L_PROJECTILE	1500
-#macro L_PLAYER		2000
+#macro L_PROJECTILE	2000
+#macro L_OBJ		3000
+#macro L_PLAYER		4000
 #macro L_ENEMY		3000
 #macro L_BACKGROUND 8000
 

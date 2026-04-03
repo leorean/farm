@@ -1,5 +1,7 @@
 application_surface_draw_enable(false);
 
+surf_lights = -1;
+
 // 2400 ticks per day: 100 per hour (4:00 = 400, 7:00 = 700, 16:00 = 1600, 19:00 = 1900)
 maxDayTime = 2400;
 dayTime = 700; // 7:00 AM
@@ -23,7 +25,7 @@ daytime_sample = function() {
 	var kr = [0.18, 0.95, 1, 1, 1.0, 0.55, 0.18];
 	var kg = [0.22, 0.5, 1, 1, 0.38, 0.32, 0.22];
 	var kb = [0.48, 0.35, 1, 1, 0.28, 0.72, 0.48];
-	var kd = [0.72, 0.38, 0, 0, 0.12, 0.42, 0.72];
+	var kd = [0.52, 0.38, 0, 0, 0.12, 0.42, 0.52];
 	var n = array_length(kt);
 	for (var i = 0; i < n - 1; i++) {
 		if (t >= kt[i] && t < kt[i + 1]) {
