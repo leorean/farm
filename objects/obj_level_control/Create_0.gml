@@ -25,3 +25,5 @@ for (var _x = 0; _x < _seg_in_view_w; _x++) {
 		map_load_segment(map_json, map_tiles_json, _x, _y);
 	}
 }
+
+dayTimeCtl = instance_create_depth(0, 0, -900000, obj_daytime_control);

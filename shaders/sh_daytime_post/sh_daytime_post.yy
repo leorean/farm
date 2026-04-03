@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"sh_daytime_post",
+  "name":"sh_daytime_post",
+  "parent":{
+    "name":"shaders",
+    "path":"folders/shaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}
