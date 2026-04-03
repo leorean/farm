@@ -10,6 +10,7 @@
   },
   "defaultScriptType":1,
   "Folders":[
+    {"$GMFolder":"","%Name":"tilesets","folderPath":"folders/tilesets.yy","name":"tilesets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"objects","folderPath":"folders/objects.yy","name":"objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"level","folderPath":"folders/objects/level.yy","name":"level","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"scripts","folderPath":"folders/scripts.yy","name":"scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -38,6 +39,8 @@
     {"id":{"name":"scr_input","path":"scripts/scr_input/scr_input.yy",},},
     {"id":{"name":"scr_map","path":"scripts/scr_map/scr_map.yy",},},
     {"id":{"name":"scr_util","path":"scripts/scr_util/scr_util.yy",},},
+    {"id":{"name":"spr_tiles","path":"sprites/spr_tiles/spr_tiles.yy",},},
+    {"id":{"name":"ts_tiles","path":"tilesets/ts_tiles/ts_tiles.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

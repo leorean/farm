@@ -8,6 +8,11 @@
  "tilecount":4096,
  "tiledversion":"1.11.0",
  "tileheight":8,
+ "tiles":[
+        {
+         "id":256,
+         "type":"grass"
+        }],
  "tilewidth":8,
  "type":"tileset",
  "version":"1.10"
