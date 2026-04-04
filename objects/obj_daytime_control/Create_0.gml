@@ -1,4 +1,4 @@
-application_surface_draw_enable(false);
+application_surface_draw_enable(true);
 
 surf_lights = -1;
 
@@ -11,9 +11,10 @@ dayTint_t0 = 700;
 dayTint_t1 = 1600;
 
 // Outside daytime: 0 = no palette snap, 1 = full snap to spr_palette
-palette_strength = 0.55;
+palette_strength = 0.5;
 
-depth = -0;
+depth = -900000;
+surf = -1;
 
 // Returns struct { tr, tg, tb, d } — tint RGB and darkness amount (0 = none, 1 = black)
 daytime_sample = function() {

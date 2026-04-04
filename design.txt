@@ -1,0 +1,4 @@
+* farm on separate level
+* farm is 6x6 screens, camera scrolling
+* player farms actively, bots automatically help
+* instead of post-draw, draw in draw method

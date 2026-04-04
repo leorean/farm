@@ -1,9 +1,12 @@
-if (!surface_exists(application_surface)) {
-	exit;
-}
-
 var _sw = max(1, surface_get_width(application_surface));
 var _sh = max(1, surface_get_height(application_surface));
+
+if (!surface_exists(surf) || surface_get_width(surf) != _sw || surface_get_height(surf) != _sh) {
+	if (surface_exists(surf)) {
+		surface_free(surf);
+	}
+	surf = surface_create(_sw, _sh);
+}
 
 if (!surface_exists(surf_lights) || surface_get_width(surf_lights) != _sw || surface_get_height(surf_lights) != _sh) {
 	if (surface_exists(surf_lights)) {
@@ -23,6 +26,10 @@ with (obj_light) {
 gpu_set_blendmode(bm_normal);
 surface_reset_target();
 
+surface_set_target(surf);
+draw_surface(application_surface, 0, 0);
+surface_reset_target();
+
 var p = daytime_sample();
 
 var _buf_w = window_get_width();
@@ -36,11 +43,8 @@ if (_buf_h < 2) _buf_h = _sh * V_ZOOM;
 
 var _fit = min(_buf_w / _sw, _buf_h / _sh);
 var _scale = min(V_ZOOM, _fit);
-var _draw_w = _sw * _scale;
-var _draw_h = _sh * _scale;
-var _ox = floor((_buf_w - _draw_w) / 2);
-var _oy = floor((_buf_h - _draw_h) / 2);
 
+var _texfilter_saved = gpu_get_texfilter();
 gpu_set_blendenable(false);
 gpu_set_texfilter(false);
 
@@ -60,8 +64,8 @@ var _samp_lit = shader_get_sampler_index(sh_daytime_post, "u_light_map");
 texture_set_stage(_samp_pal, sprite_get_texture(spr_palette, 0));
 texture_set_stage(_samp_lit, surface_get_texture(surf_lights));
 
-draw_surface_ext(application_surface, _ox, _oy, _scale, _scale, 0, c_white, 1);
+draw_surface(surf, 0, 0);
 
 shader_reset();
-gpu_set_texfilter(true);
+gpu_set_texfilter(_texfilter_saved);
 gpu_set_blendenable(true);
