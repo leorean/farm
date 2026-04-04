@@ -11,9 +11,10 @@ dayTint_t0 = 700;
 dayTint_t1 = 1600;
 
 // Outside daytime: 0 = no palette snap, 1 = full snap to spr_palette
-palette_strength = 0.5;
+palette_strength = 1;
 
-depth = -900000;
+// Draw last: lower depth = earlier draw; post must run after scene is on application_surface
+depth = -90000;
 surf = -1;
 
 // Returns struct { tr, tg, tb, d } — tint RGB and darkness amount (0 = none, 1 = black)

@@ -52,6 +52,8 @@ shader_set(sh_daytime_post);
 shader_set_uniform_f(shader_get_uniform(sh_daytime_post, "u_tint"), p.tr, p.tg, p.tb);
 shader_set_uniform_f(shader_get_uniform(sh_daytime_post, "u_darken"), p.d);
 shader_set_uniform_f(shader_get_uniform(sh_daytime_post, "u_palette_size"), 16, 5);
+var _uvs = sprite_get_uvs(spr_palette, 0);
+shader_set_uniform_f(shader_get_uniform(sh_daytime_post, "u_palette_uv"), _uvs[0], _uvs[1], _uvs[2], _uvs[3]);
 var _t = dayTime mod maxDayTime;
 var _ps = palette_strength;
 if (_t >= dayTint_t0 && _t < dayTint_t1) {

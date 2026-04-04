@@ -26,4 +26,4 @@ for (var _x = 0; _x < _seg_in_view_w; _x++) {
 	}
 }
 
-dayTimeCtl = instance_create_depth(0, 0, -900000, obj_daytime_control);
+dayTimeCtl = instance_create_depth(0, 0, 10000, obj_daytime_control);
