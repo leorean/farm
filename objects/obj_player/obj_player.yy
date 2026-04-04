@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"msk_8x8",
-    "path":"sprites/msk_8x8/msk_8x8.yy",
+    "name":"msk_player",
+    "path":"sprites/msk_player/msk_player.yy",
   },
   "spriteMaskId":null,
   "visible":true,

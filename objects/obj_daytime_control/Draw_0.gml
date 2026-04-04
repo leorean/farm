@@ -21,7 +21,12 @@ gpu_set_blendmode(bm_add);
 var _vx = XVIEW;
 var _vy = YVIEW;
 with (obj_light) {
-	draw_sprite_ext(sprite_index, -1, x - _vx, y - _vy, 1, 1, 0, c_white, alpha);
+	var _r = self.radius / 64;
+	// TODO: should all lights go out in daytime?
+	var _d = obj_daytime_control.daytime_sample().d < 0.05 ? 0 : 1;
+	draw_sprite_ext(spr_light, -1, 
+		self.x - _vx, 
+		self.y - _vy, _r, _r, 0, c_white, self.alpha * _d);
 }
 gpu_set_blendmode(bm_normal);
 surface_reset_target();

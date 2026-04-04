@@ -1,4 +1,14 @@
-* farm on separate level
-* farm is 6x6 screens, camera scrolling
+x farm on separate level
+x farm is 2x2 screens, camera scrolling
+x instead of post-draw, draw in draw method
 * player farms actively, bots automatically help
-* instead of post-draw, draw in draw method
+* effects
+* tiles for spring/summer/fall/winter
+
+idea:
+* you are a daywalker
+* at day, you are a humble farmer
+* at night, you turn into a vampire
+* you need to feed on animals or humans to regain stamina, or you sleep in your bed
+* if you used all your stamina, you get knocked out and end up in your bed the next morning
+* at day, you can use tools

@@ -224,7 +224,7 @@ function map_load_segment(_json, _tile_json, _seg_x_in_views, _seg_y_in_views) {
 							//instance_create_depth(_x, _y, L_OBJ, obj_player);
 							break;
 						case 2:
-							instance_create_depth(_x + T, _y + T, L_EFFECTS, obj_light);
+							create_light(_x + T, _y + T, 32, false, 1);
 							break;
 						default:
 							break;

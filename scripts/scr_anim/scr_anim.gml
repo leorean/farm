@@ -2,7 +2,7 @@ function animation_create(_sprite, _f_min, _f_count, _f_speed, _loop, _frame_wid
 	var a = instance_create_depth(0, 0, 0, obj_animation);
 	
 	a.f_min = _f_min;
-	a.f_count = _f_max;
+	a.f_count = _f_count;
 	a.f_speed = _f_speed;
 	a.f_loop = _loop;
 	a.f_sprite = _sprite;
@@ -13,6 +13,29 @@ function animation_create(_sprite, _f_min, _f_count, _f_speed, _loop, _frame_wid
 	
 	return a;
 }
+
+function animation_create_directions(_sprite, _f_min, _f_count, _f_speed, _loop, _frame_width, _frame_height) {
+	var _tw = sprite_get_width(_sprite) / _frame_width;	
+	
+	var _anims = [];
+	var _down = animation_create(_sprite, _f_min + 0 * _tw, _f_count, _f_speed, _loop, _frame_width, _frame_height);
+	var _up =	animation_create(_sprite, _f_min + 1 * _tw, _f_count, _f_speed, _loop, _frame_width, _frame_height);
+	var _left = animation_create(_sprite, _f_min + 2 * _tw, _f_count, _f_speed, _loop, _frame_width, _frame_height);
+	
+	array_push(_anims, _down);
+	array_push(_anims, _up);
+	array_push(_anims, _left);
+	
+	return _anims;
+}
+
+function animation_for_direction(_anim_array, _dir) {
+	if (_dir == DOWN) return _anim_array[0];
+	if (_dir == UP) return _anim_array[1];
+	if (_dir == LEFT) return _anim_array[2];
+	if (_dir == RIGHT) return _anim_array[2];
+}
+
 
 function animation_update(_self, _anim) {
 	if (!instance_exists(_anim)) return;
@@ -77,6 +100,13 @@ function animation_draw_projected(_anim, _flipX, _flipY, _scr, _z_offset = 0) {
 
 function animation_set(_anim_new) {
 	animation_reset(_anim_new);
+	return _anim_new;
+}
+
+function animation_set_array(_anim_new) {
+	animation_reset(_anim_new[0]);
+	animation_reset(_anim_new[1]);
+	animation_reset(_anim_new[2]);
 	return _anim_new;
 }
 
