@@ -1,3 +1,4 @@
+BACKLOG:
 x farm on separate level
 x farm is 2x2 screens, camera scrolling
 x instead of post-draw, draw in draw method
@@ -5,10 +6,26 @@ x instead of post-draw, draw in draw method
 * effects
 * tiles for spring/summer/fall/winter
 
-idea:
-* you are a daywalker
+DESIGN:
+* you are a daywalker (a vampire who can walkin daylight)
 * at day, you are a humble farmer
 * at night, you turn into a vampire
-* you need to feed on animals or humans to regain stamina, or you sleep in your bed
+* using tools costs stamina
+* getting hit costs stamina
 * if you used all your stamina, you get knocked out and end up in your bed the next morning
-* at day, you can use tools
+* the goal of the game is to turn every person into a vampire
+	* in order to do that, you must gift each person 3 of their favorite gifts in order to gain their friendship
+	* once you have friendship level 3 with them, they will allow you to turn them
+	* for each person you turned into a vampire, you will gain a level-up
+* when you level up, you can assign a skill point (SP)
+* through SP, you can level the following:
+	* max stamina
+	* attack damage
+	* life leech (advanced)
+	* stamina leech (advanced)
+	* certain skills
+		* swim
+		* dive
+		* jump
+		* fly
+		* teleport
