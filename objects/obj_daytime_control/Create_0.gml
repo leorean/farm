@@ -1,6 +1,14 @@
-application_surface_draw_enable(true);
+enum Season {
+	SPRING,
+	SUMMER,
+	FALL, 
+	WINTER
+}
 
 surf_lights = -1;
+
+day = 0; // 7 x 4 = 28 days per season
+season = Season.SPRING;
 
 // 2400 ticks per day: 100 per hour (4:00 = 400, 7:00 = 700, 16:00 = 1600, 19:00 = 1900)
 maxDayTime = 2400;
@@ -14,7 +22,6 @@ dayTint_t1 = 1600;
 palette_strength = 1;
 
 // Draw last: lower depth = earlier draw; post must run after scene is on application_surface
-depth = -90000;
 surf = -1;
 
 // Returns struct { tr, tg, tb, d } — tint RGB and darkness amount (0 = none, 1 = black)

@@ -7,6 +7,22 @@
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "farm.tmx": {
+            "scale": 4,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 284.25,
+                "y": 206.875
+            }
+        },
+        "map.tmx": {
+            "scale": 4,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 313,
+                "y": 157.625
+            }
+        }
     },
     "last.exportedFilePath": "D:/Development/farm/datafiles",
     "last.imagePath": "D:/Development/farm/gfx",

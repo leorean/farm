@@ -27,7 +27,7 @@ gpu_set_blendmode(bm_normal);
 surface_reset_target();
 
 surface_set_target(surf);
-draw_surface(application_surface, 0, 0);
+draw_surface(application_surface, 0,  0);
 surface_reset_target();
 
 var p = daytime_sample();
@@ -66,7 +66,7 @@ var _samp_lit = shader_get_sampler_index(sh_daytime_post, "u_light_map");
 texture_set_stage(_samp_pal, sprite_get_texture(spr_palette, 0));
 texture_set_stage(_samp_lit, surface_get_texture(surf_lights));
 
-draw_surface(surf, 0, 0);
+draw_surface(surf, XVIEW, YVIEW);
 
 shader_reset();
 gpu_set_texfilter(_texfilter_saved);

@@ -3,6 +3,6 @@
  <editorsettings>
   <export target="tiles.json" format="json"/>
  </editorsettings>
- <image source="../gfx/tiles.png" width="512" height="512"/>
+ <image source="../gfx/tiles_spring.png" width="512" height="512"/>
  <tile id="256" type="grass"/>
 </tileset>

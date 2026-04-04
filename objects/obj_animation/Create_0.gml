@@ -1,0 +1,10 @@
+f_frame = 0;
+f_cur = 0.0;
+f_speed = 0.0;
+f_min = 0;
+f_count = 0;
+f_loop = false;
+f_is_done = false;
+f_sprite = -1;
+f_width = 0;
+f_height = 0;

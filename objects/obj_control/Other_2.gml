@@ -8,19 +8,22 @@
 #macro UP -2
 #macro DOWN 2
 
+#macro L_DAYTIME	0600
+
 #macro L_UI			0400 // mouse, menus, etc.
 #macro L_HUD		0500 // any in-game display
 #macro L_EFFECTS	1000
 #macro L_PROJECTILE	2000
-#macro L_OBJ		3000
-#macro L_PLAYER		4000
-#macro L_ENEMY		3000
+#macro L_PLAYER		3000
+#macro L_ENEMY		4000
+#macro L_OBJ		5000
+#macro L_FG			6000
+#macro L_BG			7000
 #macro L_BACKGROUND 8000
 
 // tile map
-#macro L_FG			3000
-#macro L_BG			4000
 #macro T			   8
+#macro TT             16
 
 #macro XVIEW camera_get_view_x(view_camera[0])
 #macro YVIEW camera_get_view_y(view_camera[0])

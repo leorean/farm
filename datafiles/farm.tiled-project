@@ -10,5 +10,25 @@
     "properties": [
     ],
     "propertyTypes": [
+        {
+            "color": "#ffe6ff00",
+            "drawFill": true,
+            "id": 1,
+            "members": [
+            ],
+            "name": "player",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        }
     ]
 }
