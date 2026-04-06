@@ -68,6 +68,8 @@ if (k_action2_pressed) {
 	
 	if (check_if_can_till(_xt, _yt)) {
 		till_soil(_xt, _yt);
+	} else if(check_if_can_untill(_xt, _yt)) {
+		untill_soil(_xt, _yt);
 	}
 }
 
