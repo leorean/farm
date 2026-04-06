@@ -1,3 +1,14 @@
+enum Tool {
+	HAND,
+	HOE,
+	WATERING_CAN,
+	AXE,
+	HAMMER,
+	SCYTHE,
+	PICKAXE,
+	SWORD
+}
+
 enum PS {
 	IDLE =		1 << 0,
 	WALK =		1 << 1
@@ -13,6 +24,8 @@ k_right = false;
 k_action1 = false;
 k_action2 = false;
 k_action2_pressed = false;
+k_ls_pressed = false;
+k_rs_pressed = false;
 
 xVel = 0;
 yVel = 0;
@@ -25,6 +38,18 @@ push_power = 0;
 // TT precision
 target_tile_x = 0;
 target_tile_y = 0;
+
+tools = [
+	Tool.HAND,
+	Tool.HOE,
+	Tool.WATERING_CAN,
+	Tool.AXE,
+	Tool.HAMMER,
+	Tool.SCYTHE,
+	Tool.PICKAXE,
+	Tool.SWORD
+];
+toolIndex = 0;
 
 
 create_light(x, y, 40, false, 1.0, self);

@@ -1,6 +1,7 @@
 window_set_size(V_WIDTH * V_ZOOM, V_HEIGHT * V_ZOOM);
 window_center();
-display_set_gui_size(V_WIDTH * V_ZOOM, V_HEIGHT * V_ZOOM);
+//display_set_gui_size(V_WIDTH * V_ZOOM, V_HEIGHT * V_ZOOM);
+display_set_gui_size(V_WIDTH, V_HEIGHT);
 
 // GLOBAL ASSETS
 

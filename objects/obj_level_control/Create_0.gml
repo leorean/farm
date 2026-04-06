@@ -33,3 +33,5 @@ dayTimeCtl = instance_create_depth(0, 0, L_DAYTIME, obj_daytime_control);
 player = instance_create_depth(player_x, player_y, L_PLAYER, obj_player);
 camera = instance_create_depth(player_x, player_y, 0, obj_camera);
 camera.target = player;
+
+hud = instance_create_depth(0, 0, 0, obj_hud);
