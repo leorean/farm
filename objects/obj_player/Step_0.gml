@@ -57,6 +57,20 @@ if (state == PS.WALK) {
 	}
 }
 
+// tilling
+
+target_tile_x = (x div TT) * TT + sign(dir) * (dir == LEFT || dir == RIGHT) * TT;
+target_tile_y = (y div TT) * TT + sign(dir) * (dir == UP || dir == DOWN) * TT;
+if (k_action2_pressed) {
+	
+	var _xt = target_tile_x;
+	var _yt = target_tile_y;
+	
+	if (check_if_can_till(_xt, _yt)) {
+		till_soil(_xt, _yt);
+	}
+}
+
 // collision & movement
 
 if (!check_collision(self, xVel, 0)) {

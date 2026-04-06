@@ -18,6 +18,7 @@
 #macro L_ENEMY		4000
 #macro L_OBJ		5000
 #macro L_FG			6000
+#macro L_TILL		6500
 #macro L_BG			7000
 #macro L_BACKGROUND 8000
 

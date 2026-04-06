@@ -17,8 +17,10 @@ function map_load_from_file(_file, _tileset) {
 	// step 2: prepare layers
 	layer_bg = layer_create(L_BG, "BG");
 	layer_fg = layer_create(L_FG, "FG");
+	layer_till = layer_create(L_TILL, "TILL");
 	tilemap_bg = layer_tilemap_create(layer_bg, 0, 0, _tileset, _w, _h);
 	tilemap_fg = layer_tilemap_create(layer_fg, 0, 0, _tileset, _w, _h);
+	tilemap_till = layer_tilemap_create(layer_till, 0, 0, _tileset, _w, _h);
 	
 	// step 3: prepare layer data in 2D
 	var _layers = _json.layers;
@@ -95,7 +97,7 @@ function map_load_segment(_json, _tile_json, _seg_x_in_views, _seg_y_in_views) {
 				var _y = _data[_i].y;
 				
 				if (_x < _seg_x_in_tiles || _x > _seg_x_in_tiles + V_WIDTH
-					|| _y < _seg_y_in_tiles || _y > _seg_y_in_tiles + V_HEIGHT) {						
+					|| _y < _seg_y_in_tiles || _y > _seg_y_in_tiles + V_HEIGHT) {
 					continue;
 				}
 				

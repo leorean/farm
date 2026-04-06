@@ -19,7 +19,7 @@ dayTint_t0 = 700;
 dayTint_t1 = 1600;
 
 // Outside daytime: 0 = no palette snap, 1 = full snap to spr_palette
-palette_strength = 1;
+palette_strength = .5;
 
 // Draw last: lower depth = earlier draw; post must run after scene is on application_surface
 surf = -1;

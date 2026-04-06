@@ -6,10 +6,12 @@ enum LevelState {
 
 state = LevelState.PLAY;
 
-layer_bg = -1;
-layer_fg = -1;
-tilemap_bg = -1;
-tilemap_fg = -1;
+layer_bg =		-1;
+layer_till =	-1;
+layer_fg =		-1;
+tilemap_bg =	-1;
+tilemap_till =	-1;
+tilemap_fg =	-1;
 segments_loaded = [];
 player_x = 0;
 player_y = 0;

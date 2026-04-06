@@ -8,6 +8,9 @@
     ],
     "fileStates": {
         "farm.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
             "scale": 4,
             "selectedLayer": 0,
             "viewCenter": {

@@ -12,6 +12,7 @@ k_left = false;
 k_right = false;
 k_action1 = false;
 k_action2 = false;
+k_action2_pressed = false;
 
 xVel = 0;
 yVel = 0;
@@ -20,6 +21,11 @@ zGrav = .1;
 z = 0;
 
 push_power = 0;
+
+// TT precision
+target_tile_x = 0;
+target_tile_y = 0;
+
 
 create_light(x, y, 40, false, 1.0, self);
 
