@@ -5,6 +5,7 @@ x instead of post-draw, draw in draw method
 * player farms actively, bots automatically help
 * effects
 * tiles for spring/summer/fall/winter
+* store tilled soil in data
 
 DESIGN:
 * you are a daywalker (a vampire who can walkin daylight)
