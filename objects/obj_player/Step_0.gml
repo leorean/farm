@@ -59,24 +59,47 @@ if (state == PS.WALK) {
 
 // tilling / farming
 
-target_tile_x = (x div TT) * TT + sign(dir) * (dir == LEFT || dir == RIGHT) * TT;
-target_tile_y = (y div TT) * TT + sign(dir) * (dir == UP || dir == DOWN) * TT;
+var _xo = 0;
+var _yo = 0;
+if (dir == LEFT || dir == RIGHT) {
+	_yo = 4;
+	_xo = -sign(dir) * 4;
+}
+if (dir == UP) _yo = 4;
+
+target_tile_x = ((x + _xo) div TT) * TT + sign(dir) * (dir == LEFT || dir == RIGHT) * TT;
+target_tile_y = ((y + _yo) div TT) * TT + sign(dir) * (dir == UP || dir == DOWN) * TT;
 var _xt = target_tile_x;
 var _yt = target_tile_y;
 var _toolType = tools[toolIndex];
 
+toolDelay = max(toolDelay - 1, 0);
+
 if (has_flag(state, PS.IDLE | PS.WALK)) {
+	
+	if (state == PS.WALK) toolDelay = 0;
 
 	if (k_ls_pressed) toolIndex = (toolIndex + array_length(tools) - 1) % array_length(tools);
 	if (k_rs_pressed) toolIndex = (toolIndex + 1) % array_length(tools);
 	
-	if (k_action2_pressed) {
-	
-		if (_toolType == Tool.HOE) {
-			state = PS.USE_TOOL;
-			anim = animation_set_array(anim_use_tool);
+	if (k_action2) {
+		switch(_toolType) {
+			case Tool.HOE:
+			case Tool.HAMMER:
+			case Tool.PICKAXE:
+			case Tool.AXE:
+			case Tool.WATERING_CAN:
+				state = PS.USE_TOOL;
+				anim = animation_set_array(anim_use_tool);
+				toolDelay = 16;
+				toolState = ToolState.BEGIN;
+			break;
+			case Tool.SCYTHE:
+			case Tool.SWORD:
+				state = PS.ATTACK;
+				anim = animation_set_array(anim_attack);
+			break;
 		}
-		
 	}
 }
 
@@ -84,20 +107,49 @@ if (has_flag(state, PS.USE_TOOL)) {
 	xVel = 0;
 	yVel = 0;
 	var _a = animation_for_direction(anim, dir);
-
-	if (animation_is_done(_a)) {
-		if (_toolType == Tool.HOE) {
-			if (check_if_can_till(_xt, _yt)) {
-				till_soil(_xt, _yt);
-			}
-		}
 	
-		if (_toolType == Tool.HAMMER) {
-			if(check_if_can_untill(_xt, _yt)) {
-				untill_soil(_xt, _yt);
-			}	
+	if (toolState == ToolState.BEGIN) {
+		_a.f_cur = 0;
+		if (toolDelay == 0 && !k_action2) {
+			toolState = ToolState.DO;
+		}		
+	}
+	
+	if (toolState == ToolState.DO) {
+		if (animation_is_done(_a)) {
+			toolDelay = 20;
+			toolState = ToolState.END;
+			
+			
+			if (_toolType == Tool.HOE) {
+				if (check_if_can_till(_xt, _yt)) {
+					till_soil(_xt, _yt);
+				}
+			}
+	
+			if (_toolType == Tool.HAMMER) {
+				if(check_if_can_untill(_xt, _yt)) {
+					untill_soil(_xt, _yt);
+				}	
+			}
+			
 		}
-		
+	}
+	
+	if (toolState == ToolState.END) {
+		if (toolDelay == 0) {		
+			state = PS.IDLE;
+			anim = animation_set_array(anim_idle);
+		}
+	}
+}
+
+if (has_flag(state, PS.ATTACK)) {
+	xVel = 0;
+	yVel = 0;
+	var _a = animation_for_direction(anim, dir);
+
+	if (animation_is_done(_a)) {		
 		state = PS.IDLE;
 		anim = animation_set_array(anim_idle);
 	}

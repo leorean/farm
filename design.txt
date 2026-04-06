@@ -8,6 +8,9 @@ x instead of post-draw, draw in draw method
 * store tilled soil in data
 * randomize object generation on farm
 
+* extra state/animation for filling watering can
+* extra state/animation for sowing
+
 
 * tool levels:
 * HAND

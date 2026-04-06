@@ -5,5 +5,6 @@ k_right = check_input(Btn.Right, InputState.HOLD);
 k_action1 = check_input(Btn.A, InputState.HOLD);
 k_action2 = check_input(Btn.B, InputState.HOLD);
 k_action2_pressed = check_input(Btn.B, InputState.PRESSED);
+k_action2_pressed = check_input(Btn.B, InputState.RELEASED);
 k_ls_pressed = check_input(Btn.LS, InputState.PRESSED);
 k_rs_pressed = check_input(Btn.RS, InputState.PRESSED);

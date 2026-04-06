@@ -21,7 +21,14 @@ enum PS {
 	GOT_ITEM =		1 << 8,
 }
 
+enum ToolState {
+	BEGIN,
+	DO,
+	END
+}
+
 state = PS.IDLE;
+toolState = ToolState.BEGIN;
 dir = DOWN;
 
 k_up = false;
@@ -31,6 +38,7 @@ k_right = false;
 k_action1 = false;
 k_action2 = false;
 k_action2_pressed = false;
+k_action2_released = false;
 k_ls_pressed = false;
 k_rs_pressed = false;
 
@@ -42,6 +50,8 @@ z = 0;
 
 push_power = 0;
 carry_obj = noone;
+
+toolDelay = 0;
 
 // TT precision
 target_tile_x = 0;
@@ -64,8 +74,8 @@ create_light(x, y, 40, false, 1.0, self);
 
 anim_idle =			animation_create_directions(spr_player, 0, 1, .0, false, 24, 24);
 anim_walk =			animation_create_directions(spr_player, 1, 4, .15, true, 24, 24);
-anim_attack =		animation_create_directions(spr_player, 5, 4, .2, false, 24, 24);
-anim_use_tool =		animation_create_directions(spr_player, 9, 4, .1, false, 24, 24);
+anim_attack =		animation_create_directions(spr_player, 5, 4, .3, false, 24, 24);
+anim_use_tool =		animation_create_directions(spr_player, 9, 4, .25, false, 24, 24);
 anim_pick_up =		animation_create_directions(spr_player, 13, 2, .05, false, 24, 24);
 anim_idle_carry =	animation_create_directions(spr_player, 15, 1, .05, false, 24, 24);
 anim_walk_carry =	animation_create_directions(spr_player, 16, 4, .15, true, 24, 24);

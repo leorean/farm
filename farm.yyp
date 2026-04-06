@@ -66,6 +66,7 @@
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"spr_shadow","path":"sprites/spr_shadow/spr_shadow.yy",},},
     {"id":{"name":"spr_tiles_spring","path":"sprites/spr_tiles_spring/spr_tiles_spring.yy",},},
+    {"id":{"name":"spr_tools","path":"sprites/spr_tools/spr_tools.yy",},},
     {"id":{"name":"ts_tiles","path":"tilesets/ts_tiles/ts_tiles.yy",},},
   ],
   "resourceType":"GMProject",
