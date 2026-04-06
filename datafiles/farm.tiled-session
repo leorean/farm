@@ -12,18 +12,18 @@
                 3
             ],
             "scale": 4,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 284.25,
-                "y": 206.875
+                "x": 326.75,
+                "y": 242.875
             }
         },
         "map.tmx": {
             "scale": 4,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 313,
-                "y": 157.625
+                "x": 308,
+                "y": 167.625
             }
         }
     },

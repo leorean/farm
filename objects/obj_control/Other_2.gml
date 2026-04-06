@@ -1,6 +1,6 @@
 #macro V_WIDTH 256
 #macro V_HEIGHT 192
-#macro V_ZOOM 5
+#macro V_ZOOM 6
 
 #macro NONE 0
 #macro LEFT -1
