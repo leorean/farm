@@ -43,7 +43,6 @@
  <tile id="539" type="water"/>
  <tile id="540" type="water"/>
  <tile id="541" type="water"/>
- <tile id="582" type="tillable"/>
  <tile id="594" type="water"/>
  <tile id="595" type="water"/>
  <tile id="596" type="water"/>
