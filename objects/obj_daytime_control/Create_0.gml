@@ -12,7 +12,10 @@ season = Season.SPRING;
 
 // 2400 ticks per day: 100 per hour (4:00 = 400, 7:00 = 700, 16:00 = 1600, 19:00 = 1900)
 maxDayTime = 2400;
-dayTime = 700; // 7:00 AM
+dayTime = 500; // 5:00 AM
+
+maxTimeTicks = 60; // how many game-ticks it takes to increase the timer
+timeTicks = maxTimeTicks;
 
 // [dayTint_t0, dayTint_t1): identity tint + no palette blend (original pixels)
 dayTint_t0 = 700;

@@ -7,3 +7,9 @@ if (keyboard_check(ord("1"))) {
 	dayTime = (dayTime - _step + maxDayTime) mod maxDayTime;
 	debug(dayTime);
 }
+
+timeTicks = max(timeTicks - 1, 0);
+if (timeTicks == 0) {
+	dayTime = (dayTime + 1) % maxDayTime;
+	timeTicks = maxTimeTicks;
+}

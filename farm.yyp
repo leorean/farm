@@ -59,6 +59,7 @@
     {"id":{"name":"msk_4x4","path":"sprites/msk_4x4/msk_4x4.yy",},},
     {"id":{"name":"msk_8x8","path":"sprites/msk_8x8/msk_8x8.yy",},},
     {"id":{"name":"msk_player","path":"sprites/msk_player/msk_player.yy",},},
+    {"id":{"name":"spr_font_10x10_hud","path":"sprites/spr_font_10x10_hud/spr_font_10x10_hud.yy",},},
     {"id":{"name":"spr_hud","path":"sprites/spr_hud/spr_hud.yy",},},
     {"id":{"name":"spr_light","path":"sprites/spr_light/spr_light.yy",},},
     {"id":{"name":"spr_palette","path":"sprites/spr_palette/spr_palette.yy",},},
