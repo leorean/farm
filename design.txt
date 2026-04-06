@@ -2,22 +2,74 @@ BACKLOG:
 x farm on separate level
 x farm is 2x2 screens, camera scrolling
 x instead of post-draw, draw in draw method
-* player farms actively, bots automatically help
+* player farms actively, bots automatically help?
 * effects
 * tiles for spring/summer/fall/winter
 * store tilled soil in data
 * randomize object generation on farm
+* tool hold to power-up and release
 
 * extra state/animation for filling watering can
 * extra state/animation for sowing
 
 
-* tool levels:
-* HAND
-	* level 1: can lift bushes
-	* level 2: can lift bushes, stones, wood
-	* level 3: can lift bushes, stones, wood, big stones, big wood
-	* level 4: can lift all of the above, but can walk with big stones and big wood
+* tools:
+	* hoe
+		* can till soil	
+	* axe
+		* can destroy wood & fell trees
+	* pickaxe
+		* can destroy rocks & untill soil
+	* scythe
+		* can destoy bushes & harvest grass
+	* watering can
+		* can water tilled soil
+	* seed bag
+		* can place seeds
+
+* items
+	* spring boots
+		* can jump
+	* lightning boots
+		* can run fast while holding button
+	* whistle
+		* teleport back to farm
+	* hook
+		* can hook onto distant objects and stun enemies
+	* fire staff
+		* can shoot fire at a distance, burning vines
+	* power glove
+		* level 1: can lift bushes
+		* level 2: can lift bushes, stones, wood
+		* level 3: can lift bushes, stones, wood, big stones, big wood
+		* level 4: can lift all of the above, but can walk with big stones and big wood
+
+* upgrades
+	* player can go to the blacksmith and upgrade tools
+		* for upgrading, player needs money and resources (bronze, silver, gold, diamond)
+* energy
+	* player has no health, only energy
+	* getting hit costs energy
+	* using a tool costs energy
+	* if energy is empty, player collapses and wakes up in bed next morning (penalty = lose X items from inventory and some money)
 
 DESIGN:
-* 
+* player rebuilds the farm, gains money through selling crops
+* player explores the land, finds dungeons to gather valuable resources and treasures
+* dungeons are randomized every time the player enters (mines, etc.)
+* dungeons
+	* there are X dungeons placed in the world
+	* have a randomized layout and multiple levels
+	* each level has a goal:
+		* find-the-exit: exit already exists, just need to enter
+		* defeat-all-enemies: exit appears when the last enemy is killed (can also be one enemy boss)
+		* hidden-exit: exit is under one of the objects (rocks, bushes, trees)
+	* at the end of the dungeon there is a treasure room with a permanent unlockable
+* areas
+	* farm
+	* field
+	* beach
+	* forest
+	* mountain
+	* ruins
+	* town
