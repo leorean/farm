@@ -16,9 +16,11 @@ segments_loaded = [];
 player_x = 0;
 player_y = 0;
 
+tileset = ts_tiles_spring;
+
 map_tiles_json = map_load_tile_data("tiles.json");
 
-map_json = map_load_from_file("farm.json", ts_tiles);
+map_json = map_load_from_file("farm.json", tileset);
 var _seg_in_view_w = (map_json.width * T) / V_WIDTH;
 var _seg_in_view_h = (map_json.height * T) / V_HEIGHT;
 

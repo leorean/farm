@@ -312,6 +312,18 @@
         {
          "id":793,
          "type":"water"
+        }, 
+        {
+         "id":1216,
+         "type":"rock_small"
+        }, 
+        {
+         "id":1218,
+         "type":"bush_small"
+        }, 
+        {
+         "id":1220,
+         "type":"wood_small"
         }],
  "tilewidth":8,
  "type":"tileset",

@@ -13,6 +13,9 @@ x instead of post-draw, draw in draw method
 * extra state/animation for sowing
 * chests
 
+GOTCHAS:
+* no way to replace sprite of a tileset at runtime -> need 4 different tilesets, and need to copy the animations manually later...
+
 * tools:
 	* hoe
 		* can till soil	

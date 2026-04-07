@@ -80,4 +80,7 @@
  <tile id="791" type="water"/>
  <tile id="792" type="water"/>
  <tile id="793" type="water"/>
+ <tile id="1216" type="rock_small"/>
+ <tile id="1218" type="bush_small"/>
+ <tile id="1220" type="wood_small"/>
 </tileset>

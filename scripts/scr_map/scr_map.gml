@@ -13,7 +13,7 @@ function map_load_from_file(_file, _tileset) {
 	var _h = real(_json.height);
 	room_width = _w * T;
 	room_height = _h * T;
-		
+
 	// step 2: prepare layers
 	layer_bg = layer_create(L_BG, "BG");
 	layer_fg = layer_create(L_FG, "FG");
@@ -216,9 +216,9 @@ function map_load_segment(_json, _tile_json, _seg_x_in_views, _seg_y_in_views) {
 
 					var _type = get_tile_type(_tile_json, _tile);
 					
-					//if (_type == "grass") {
-//						instance_create_depth(_x + 8, _y + 8, L_BG - 1, obj_grass, {tile: _tile});
-					//}
+					if (_type == "bush_small") {
+						create_harvestable(_x + 8, _y + 8, HarvestableType.BUSH_SMALL, _tile);						
+					}
 
 					// hard-coded values:
 					switch(_tile) {
@@ -305,4 +305,9 @@ function get_tile_type(_json, _tile) {
 		}
 	}
 	return "";
+}
+
+function tileset_get_sprite() {
+	if (obj_level_control.tileset == ts_tiles_spring) return spr_tiles_spring;
+	throw "Not implemented!";
 }

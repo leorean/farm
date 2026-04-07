@@ -189,3 +189,37 @@ function untill_soil(_x, _y) {
 
 	update_till_borders_around(_base_cell_x, _base_cell_y, 2, 2);
 }
+
+function check_if_can_water(_x, _y) {
+	var _base_cell_x = _x div T;
+	var _base_cell_y = _y div T;
+
+	for (var _i = 0; _i < 2; _i++) {
+		for (var _j = 0; _j < 2; _j++) {
+			var _cell_x = _base_cell_x + _i;
+			var _cell_y = _base_cell_y + _j;
+			var _tile = get_till_tile_at_cell(_cell_x, _cell_y);
+
+			// Can water only dry tilled soil (not empty and not already wet).
+			if (!is_dry_tilled_tile(_tile)) return false;
+		}
+	}
+
+	return true;
+}
+
+function water_tilled_soil(_x, _y) {
+	var _base_cell_x = _x div T;
+	var _base_cell_y = _y div T;
+
+	for (var _i = 0; _i < 2; _i++) {
+		for (var _j = 0; _j < 2; _j++) {
+			var _cell_x = _base_cell_x + _i;
+			var _cell_y = _base_cell_y + _j;
+
+			tilemap_set(obj_level_control.tilemap_till, T_WET_TILLED_SOIL_C, _cell_x, _cell_y);
+		}
+	}
+
+	update_till_borders_around(_base_cell_x, _base_cell_y, 2, 2);
+}
