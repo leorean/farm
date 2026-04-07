@@ -1,4 +1,4 @@
-function check_collision(_self, _x_off, _y_off) {
+function player_check_collision(_self, _x_off, _y_off) {
 	//if (collision_rectangle()
 	
 	var _x = [_self.bbox_left, _self.x, _self.bbox_right];
@@ -11,8 +11,12 @@ function check_collision(_self, _x_off, _y_off) {
 		}
 	}
 	
-	return false;
-	//var _tile_fg = get_tile_at(_self.x + _x_off, _self.y + _y_off, "FG");
+	var _harvestable = collision_rectangle(bbox_left + _x_off, bbox_top + _y_off, bbox_right + _x_off, bbox_bottom + _y_off, obj_harvestable, false, true);
+	if (instance_exists(_harvestable) && _harvestable.state == HarvestableState.IDLE) {
+		if (_harvestable.type != HarvestableType.GRASS) {
+			return true;
+		}
+	}
 	
-	//return _tile_fg != 0;
+	return false;	
 }

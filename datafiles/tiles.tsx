@@ -83,4 +83,8 @@
  <tile id="1216" type="rock_small"/>
  <tile id="1218" type="bush_small"/>
  <tile id="1220" type="wood_small"/>
+ <tile id="1222" type="grass"/>
+ <tile id="1223" type="grass"/>
+ <tile id="1286" type="grass"/>
+ <tile id="1287" type="grass"/>
 </tileset>

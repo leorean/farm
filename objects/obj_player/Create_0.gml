@@ -47,6 +47,8 @@ yVel = 0;
 zVel = 0;
 zGrav = .1;
 z = 0;
+cx = x;
+cy = y;
 
 push_power = 0;
 carry_obj = noone;

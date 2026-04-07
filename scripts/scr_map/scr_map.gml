@@ -217,7 +217,10 @@ function map_load_segment(_json, _tile_json, _seg_x_in_views, _seg_y_in_views) {
 					var _type = get_tile_type(_tile_json, _tile);
 					
 					if (_type == "bush_small") {
-						create_harvestable(_x + 8, _y + 8, HarvestableType.BUSH_SMALL, _tile);						
+						create_harvestable(_x + 8, _y + 8, HarvestableType.BUSH_SMALL, _tile);
+					}
+					if (_type == "grass") {
+						create_harvestable(_x + 8, _y + 8, HarvestableType.GRASS, _tile);
 					}
 
 					// hard-coded values:

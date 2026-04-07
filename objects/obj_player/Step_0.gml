@@ -60,12 +60,9 @@ if (state == PS.WALK) {
 // tilling / farming
 
 var _xo = 0;
-var _yo = 0;
-if (dir == LEFT || dir == RIGHT) {
-	_yo = 4;
-	_xo = -sign(dir) * 4;
-}
-if (dir == UP) _yo = 4;
+var _yo = 4;
+cx = x + _xo;
+cy = y + _yo;
 
 target_tile_x = ((x + _xo) div TT) * TT + sign(dir) * (dir == LEFT || dir == RIGHT) * TT;
 target_tile_y = ((y + _yo) div TT) * TT + sign(dir) * (dir == UP || dir == DOWN) * TT;
@@ -142,7 +139,6 @@ if (has_flag(state, PS.USE_TOOL)) {
 					untill_soil(_xt, _yt);
 				}
 			}
-			
 		}
 	}
 	
@@ -158,22 +154,47 @@ if (has_flag(state, PS.ATTACK)) {
 	xVel = 0;
 	yVel = 0;
 	var _a = animation_for_direction(anim, dir);
-
-	if (animation_is_done(_a)) {		
-		state = PS.IDLE;
-		anim = animation_set_array(anim_idle);
+	
+	if (toolState == ToolState.BEGIN) {
+		// nothing to do here
+		toolState = ToolState.DO;
+	}
+	
+	if (toolState == ToolState.DO) {
+		if (animation_is_done(_a)) {
+			toolState = ToolState.END;
+			toolDelay = 0; // no delay
+			
+			if (_toolType == Tool.SCYTHE) {
+				var _harvestables = get_harvestables_in_proximity(cx, cy, dir, 16, 180);
+				for (var _i = 0; _i < array_length(_harvestables); _i++) {
+					var _h = _harvestables[_i];
+					if (_h.type == HarvestableType.BUSH_SMALL || _h.type == HarvestableType.GRASS) {
+						instance_destroy(_harvestables[_i]);
+					}
+				}
+			}
+			
+		}
+	}
+	
+	if (toolState == ToolState.END) {
+		if (toolDelay == 0) {
+			state = PS.IDLE;
+			anim = animation_set_array(anim_idle);
+		}
 	}
 }
 
 // collision & movement
 
-if (!check_collision(self, xVel, 0)) {
+if (!player_check_collision(self, xVel, 0)) {
 	x += xVel;
 } else {
 	xVel = 0;
 }
 
-if (!check_collision(self, 0, yVel)) {
+if (!player_check_collision(self, 0, yVel)) {
 	y += yVel;
 } else {
 	yVel = 0;
