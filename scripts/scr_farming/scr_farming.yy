@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_tile",
+  "%Name":"scr_farming",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_tile",
+  "name":"scr_farming",
   "parent":{
     "name":"scripts",
     "path":"folders/scripts.yy",

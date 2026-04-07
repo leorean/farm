@@ -130,11 +130,17 @@ if (has_flag(state, PS.USE_TOOL)) {
 					till_soil(_xt, _yt);
 				}
 			}
+			
+			if (_toolType == Tool.WATERING_CAN) {
+				if (check_if_can_water(_xt, _yt)) {
+					water_tilled_soil(_xt, _yt);
+				}
+			}
 	
-			if (_toolType == Tool.PICKAXE) {
+			if (_toolType == Tool.PICKAXE || _toolType == Tool.AXE) {
 				if(check_if_can_untill(_xt, _yt)) {
 					untill_soil(_xt, _yt);
-				}	
+				}
 			}
 			
 		}

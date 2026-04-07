@@ -130,7 +130,11 @@ function check_if_can_till(_x, _y) {
 			if (_t_bg_type != "dry_soil") return false;
 			if (is_tilled_tile(_t_till)) return false;
 
+			var _t_fg = get_tile_at(_px, _py, "FG");
+			if (_t_fg != 0) return false;
+
 			// TODO: check objects
+			
 		}
 	}
 
@@ -167,7 +171,6 @@ function check_if_can_untill(_x, _y) {
 			if (!is_tilled_tile(_tile)) return false;
 		}
 	}
-
 	return true;
 }
 
