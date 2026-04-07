@@ -82,24 +82,28 @@ if (has_flag(state, PS.IDLE | PS.WALK)) {
 	if (k_ls_pressed) toolIndex = (toolIndex + array_length(tools) - 1) % array_length(tools);
 	if (k_rs_pressed) toolIndex = (toolIndex + 1) % array_length(tools);
 	
-	if (k_action2) {
-		switch(_toolType) {
-			case Tool.HOE:
-			case Tool.HAMMER:
-			case Tool.PICKAXE:
-			case Tool.AXE:
-			case Tool.WATERING_CAN:
+	switch(_toolType) {
+		case Tool.HOE:
+		case Tool.WATERING_CAN:
+		case Tool.PICKAXE:
+		case Tool.AXE:
+			if (k_action2) {
 				state = PS.USE_TOOL;
 				anim = animation_set_array(anim_use_tool);
 				toolDelay = 16;
 				toolState = ToolState.BEGIN;
-			break;
-			case Tool.SCYTHE:
-			case Tool.SWORD:
+			}
+		break;
+		case Tool.SEED_BAG:
+		case Tool.SCYTHE:
+		case Tool.SWORD:
+			if (k_action2_pressed) {
 				state = PS.ATTACK;
+				toolDelay = 16;
 				anim = animation_set_array(anim_attack);
-			break;
-		}
+				toolState = ToolState.BEGIN;
+			}
+		break;
 	}
 }
 
@@ -127,7 +131,7 @@ if (has_flag(state, PS.USE_TOOL)) {
 				}
 			}
 	
-			if (_toolType == Tool.HAMMER) {
+			if (_toolType == Tool.PICKAXE) {
 				if(check_if_can_untill(_xt, _yt)) {
 					untill_soil(_xt, _yt);
 				}	

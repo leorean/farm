@@ -3,9 +3,9 @@ enum Tool {
 	HOE,
 	WATERING_CAN,
 	AXE,
-	HAMMER,
-	SCYTHE,
 	PICKAXE,
+	SEED_BAG,
+	SCYTHE,	
 	SWORD
 }
 
@@ -62,9 +62,9 @@ tools = [
 	Tool.HOE,
 	Tool.WATERING_CAN,
 	Tool.AXE,
-	Tool.HAMMER,
-	Tool.SCYTHE,
 	Tool.PICKAXE,
+	Tool.SEED_BAG,
+	Tool.SCYTHE,
 	Tool.SWORD
 ];
 toolIndex = 1;
