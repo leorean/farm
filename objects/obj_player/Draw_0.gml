@@ -11,24 +11,48 @@ animation_draw(_a, dir == RIGHT ? -1 : 1, 1);
 if (has_flag(state, PS.USE_TOOL | PS.ATTACK)) {
 	var _tx = 0;
 	var _ty = 0;
+	var _xo = 0;
+	var _yo = 0;
 
 	if (dir == DOWN) _ty = 0;
 	if (dir == UP) _ty = 1;
 	if (dir == LEFT || dir == RIGHT) _ty = 2;
 	
-	_tx = _a.f_frame;
-	var _ti = tools[toolIndex] - 1; // because hand is at 0, and has no sprites
-	/*switch(tools[toolIndex]) {
-		case Tool.HOE: 
-			_ti = 0; 
-		break;
-		case Tool.WATERING_CAN: 
-			_ti = 1;
-		break;
-		case Tool.AXE:
-			_ti = 2;
-		break;		
-	}*/
+	_tx = _a.f_frame;	
 	
-	draw_sprite_part_ext(spr_tools, -1, _tx * 32 + _ti * 128, _ty * 32, 32, 32, x - 16 + (dir == RIGHT) * 32, y - 16, dir == RIGHT ? -1 : 1, 1, c_white, 1);
+	// special offsets for sword
+	if (tools[toolIndex] == Tool.SWORD) {		
+		if (dir == UP || dir == DOWN) {
+			if (_a.f_frame == 0) {
+				_xo = -sign(dir) * 4;
+			}
+			if (_a.f_frame == 1) {
+				_xo = -sign(dir) * 2;
+				_yo = sign(dir) * 2;
+			}
+			if (_a.f_frame == 2) {
+				_yo = sign(dir) * 6;
+			}
+			if (_a.f_frame == 3) {
+				_yo = sign(dir) * 4;
+			}
+		}
+		if (dir == LEFT || dir == RIGHT) {
+			if (_a.f_frame == 0) {
+				_yo = -4;
+			}
+			if (_a.f_frame == 1) {
+				_xo = sign(dir) * 2;
+			}
+			if (_a.f_frame == 2) {
+				_xo = sign(dir) * 6;
+			}
+			if (_a.f_frame == 3) {
+				_xo = sign(dir) * 4;
+			}
+		}
+	}
+	
+	var _ti = tools[toolIndex] - 1; // -1 because hand is at 0, and has no sprites
+	draw_sprite_part_ext(spr_tools, -1, _tx * 32 + _ti * 128, _ty * 32, 32, 32, x - 16 + (dir == RIGHT) * 32 + _xo, y - 16 + _yo, dir == RIGHT ? -1 : 1, 1, c_white, 1);
 }
