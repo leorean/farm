@@ -7,6 +7,8 @@ function create_harvestable(_x, _y, _harvestableType, _tile) {
 			_obj.mask_index = msk_8x8;
 			break;
 		case HarvestableType.BUSH_SMALL:
+		case HarvestableType.ROCK_SMALL:
+		case HarvestableType.WOOD_SMALL:
 			_obj.mask_index = msk_16x16;
 		break;
 	}

@@ -54,6 +54,7 @@
     {"id":{"name":"scr_input","path":"scripts/scr_input/scr_input.yy",},},
     {"id":{"name":"scr_light","path":"scripts/scr_light/scr_light.yy",},},
     {"id":{"name":"scr_map","path":"scripts/scr_map/scr_map.yy",},},
+    {"id":{"name":"scr_player","path":"scripts/scr_player/scr_player.yy",},},
     {"id":{"name":"scr_util","path":"scripts/scr_util/scr_util.yy",},},
     {"id":{"name":"sh_daytime_post","path":"shaders/sh_daytime_post/sh_daytime_post.yy",},},
     {"id":{"name":"msk_16x16","path":"sprites/msk_16x16/msk_16x16.yy",},},

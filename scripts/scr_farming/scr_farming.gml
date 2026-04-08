@@ -133,7 +133,7 @@ function check_if_can_till(_x, _y) {
 			var _t_fg = get_tile_at(_px, _py, "FG");
 			if (_t_fg != 0) return false;
 			
-			if (position_meeting(_px, _py, obj_harvestable)) return false;
+			if (collision_rectangle(_px, _py, _px + T, _py + T, obj_harvestable, false, true)) return false;
 
 			// TODO: check objects
 			
@@ -224,38 +224,4 @@ function water_tilled_soil(_x, _y) {
 	}
 
 	update_till_borders_around(_base_cell_x, _base_cell_y, 2, 2);
-}
-
-function get_harvestables_in_proximity(_x, _y, _dir, _radius, _angSpread) {
-	var _res = [];
-	var _minAngle = 0;
-	var _maxAngle = 0;
-	if (_dir == UP) {
-		_minAngle = 0;
-	}
-	if (_dir == DOWN) {
-		_minAngle = 180;
-	}
-	if (_dir == LEFT) {
-		_minAngle = 90;
-	}
-	if (_dir == RIGHT) {
-		_minAngle = 270;
-	}
-	
-	_maxAngle = _minAngle + _angSpread;
-	
-	for (var _i = _minAngle; _i <= _maxAngle; _i += 5) {
-		var _xo = _x + lengthdir_x(_radius, _i);
-		var _yo = _y + lengthdir_y(_radius, _i);
-		
-		var _harvestable = collision_point(_xo, _yo, obj_harvestable, false, true);
-		if (instance_exists(_harvestable) && _harvestable.state == HarvestableState.IDLE) {
-			if (!array_find(_res, _harvestable)) {
-				array_push(_res, _harvestable);
-			}
-		}
-	}
-	
-	return _res;
 }

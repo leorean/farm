@@ -135,6 +135,26 @@ if (has_flag(state, PS.USE_TOOL)) {
 			}
 	
 			if (_toolType == Tool.PICKAXE || _toolType == Tool.AXE) {
+				var _dx = (dir == LEFT || dir == RIGHT) ? cx + sign(dir) * 16 : cx;
+				var _dy = (dir == UP || dir == DOWN) ? cy + sign(dir) * 16 : cy;
+				var _harvestable = instance_place(_dx, _dy, obj_harvestable);
+				
+				if (instance_exists(_harvestable) && _harvestable.state == HarvestableState.IDLE) {
+					
+					if (_toolType == Tool.PICKAXE) {
+						// todo: check tool level
+						if ( _harvestable.type == HarvestableType.ROCK_SMALL) {
+							instance_destroy(_harvestable);
+						}
+					}
+					if (_toolType == Tool.AXE) {
+						// todo: check tool level
+						if ( _harvestable.type == HarvestableType.WOOD_SMALL) {
+							instance_destroy(_harvestable);
+						}
+					}
+				}
+				
 				if(check_if_can_untill(_xt, _yt)) {
 					untill_soil(_xt, _yt);
 				}
@@ -155,9 +175,30 @@ if (has_flag(state, PS.ATTACK)) {
 	yVel = 0;
 	var _a = animation_for_direction(anim, dir);
 	
-	if (toolState == ToolState.BEGIN) {
-		// nothing to do here
+	if (toolState == ToolState.BEGIN) {		
 		toolState = ToolState.DO;
+		
+		
+			if (_toolType == Tool.SCYTHE) {
+				var _harvestables = player_get_harvestables_for_scythe(cx, cy, dir);
+				for (var _i = 0; _i < array_length(_harvestables); _i++) {
+					var _h = _harvestables[_i];
+					if (_h.type == HarvestableType.BUSH_SMALL || _h.type == HarvestableType.GRASS) {
+						instance_destroy(_h);
+					}
+				}
+			}
+			
+			if (_toolType == Tool.SWORD) {
+				var _harvestables = player_get_harvestables_for_sword(cx, cy, dir);
+
+				for (var _i = 0; _i < array_length(_harvestables); _i++) {
+					var _h = _harvestables[_i];
+					if (_h.type == HarvestableType.BUSH_SMALL || _h.type == HarvestableType.GRASS) {
+						instance_destroy(_h);
+					}
+				}
+			}
 	}
 	
 	if (toolState == ToolState.DO) {
@@ -165,15 +206,6 @@ if (has_flag(state, PS.ATTACK)) {
 			toolState = ToolState.END;
 			toolDelay = 0; // no delay
 			
-			if (_toolType == Tool.SCYTHE) {
-				var _harvestables = get_harvestables_in_proximity(cx, cy, dir, 16, 180);
-				for (var _i = 0; _i < array_length(_harvestables); _i++) {
-					var _h = _harvestables[_i];
-					if (_h.type == HarvestableType.BUSH_SMALL || _h.type == HarvestableType.GRASS) {
-						instance_destroy(_harvestables[_i]);
-					}
-				}
-			}
 			
 		}
 	}

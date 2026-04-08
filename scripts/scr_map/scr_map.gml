@@ -220,7 +220,13 @@ function map_load_segment(_json, _tile_json, _seg_x_in_views, _seg_y_in_views) {
 						create_harvestable(_x + 8, _y + 8, HarvestableType.BUSH_SMALL, _tile);
 					}
 					if (_type == "grass") {
-						create_harvestable(_x + 8, _y + 8, HarvestableType.GRASS, _tile);
+						create_harvestable(_x + 4, _y + 4,  HarvestableType.GRASS, _tile);
+					}
+					if (_type == "rock_small") {
+						create_harvestable(_x + 8, _y + 8,  HarvestableType.ROCK_SMALL, _tile);
+					}
+					if (_type == "wood_small") {
+						create_harvestable(_x + 8, _y + 8,  HarvestableType.WOOD_SMALL, _tile);
 					}
 
 					// hard-coded values:
