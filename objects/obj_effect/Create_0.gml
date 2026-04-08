@@ -1,0 +1,10 @@
+enum ET {
+	BUSH_SMALL_DESTROY,
+	GRASS_DESTROY,
+	ROCK_SMALL_DESTROY,
+	WOOD_SMALL_DESTROY
+}
+f_cur = 0;
+f_speed = .1;
+f_max = 8;
+type = ET.BUSH_SMALL_DESTROY;

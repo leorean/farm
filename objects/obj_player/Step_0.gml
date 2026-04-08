@@ -144,13 +144,13 @@ if (has_flag(state, PS.USE_TOOL)) {
 					if (_toolType == Tool.PICKAXE) {
 						// todo: check tool level
 						if ( _harvestable.type == HarvestableType.ROCK_SMALL) {
-							instance_destroy(_harvestable);
+							_harvestable.state = HarvestableState.DESTROY;
 						}
 					}
 					if (_toolType == Tool.AXE) {
 						// todo: check tool level
 						if ( _harvestable.type == HarvestableType.WOOD_SMALL) {
-							instance_destroy(_harvestable);
+							_harvestable.state = HarvestableState.DESTROY;
 						}
 					}
 				}
@@ -184,7 +184,7 @@ if (has_flag(state, PS.ATTACK)) {
 				for (var _i = 0; _i < array_length(_harvestables); _i++) {
 					var _h = _harvestables[_i];
 					if (_h.type == HarvestableType.BUSH_SMALL || _h.type == HarvestableType.GRASS) {
-						instance_destroy(_h);
+						_h.state = HarvestableState.DESTROY;
 					}
 				}
 			}
@@ -195,7 +195,7 @@ if (has_flag(state, PS.ATTACK)) {
 				for (var _i = 0; _i < array_length(_harvestables); _i++) {
 					var _h = _harvestables[_i];
 					if (_h.type == HarvestableType.BUSH_SMALL || _h.type == HarvestableType.GRASS) {
-						instance_destroy(_h);
+						_h.state = HarvestableState.DESTROY;
 					}
 				}
 			}

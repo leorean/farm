@@ -69,7 +69,7 @@ tools = [
 	Tool.SCYTHE,
 	Tool.SWORD
 ];
-toolIndex = 1;
+toolIndex = 7;
 
 
 create_light(x, y, 40, false, 1.0, self);

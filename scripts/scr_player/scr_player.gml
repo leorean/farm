@@ -18,8 +18,8 @@ function player_get_harvestables_for_sword(_x, _y, _dir) {
 	var _harvestables = [];
 	var _seen = ds_map_create();
 	for (var _i = 0; _i < 4; _i++) {
-		var _tx = _x + _dx[_i] * 16;
-		var _ty = _y + _dy[_i] * 16;
+		var _tx = _x + _dx[_i] * 12;
+		var _ty = _y + _dy[_i] * 12;
 		var _list = ds_list_create();
 		var _count = collision_rectangle_list(_tx - 6, _ty - 6, _tx + 6, _ty + 6, obj_harvestable, false, true, _list, false);
 
