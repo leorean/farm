@@ -10,3 +10,4 @@ var _h = sprite_get_height(mask_index);
 draw_sprite_part(_spr, -1, _tsx, _tsy, _w, _h, floor(x - .5 * _w), floor(y - .5 * _h));
 
 //draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, 1);
+draw_text(x,y,hp);

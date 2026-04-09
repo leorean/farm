@@ -87,4 +87,7 @@
  <tile id="1223" type="grass"/>
  <tile id="1286" type="grass"/>
  <tile id="1287" type="grass"/>
+ <tile id="1344" type="rock_big"/>
+ <tile id="1348" type="bush_big"/>
+ <tile id="1352" type="wood_big"/>
 </tileset>

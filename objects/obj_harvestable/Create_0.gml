@@ -18,5 +18,6 @@ tile = -1;
 type = -1;
 state = HState.IDLE;
 hp = 1;
+minToolLevel = 0;
 init = false;
 hitDamage = 0;

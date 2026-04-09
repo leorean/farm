@@ -61,6 +61,7 @@
     {"id":{"name":"sh_daytime_post","path":"shaders/sh_daytime_post/sh_daytime_post.yy",},},
     {"id":{"name":"msk_16x16","path":"sprites/msk_16x16/msk_16x16.yy",},},
     {"id":{"name":"msk_1x1","path":"sprites/msk_1x1/msk_1x1.yy",},},
+    {"id":{"name":"msk_32x32","path":"sprites/msk_32x32/msk_32x32.yy",},},
     {"id":{"name":"msk_4x4","path":"sprites/msk_4x4/msk_4x4.yy",},},
     {"id":{"name":"msk_8x8","path":"sprites/msk_8x8/msk_8x8.yy",},},
     {"id":{"name":"msk_player","path":"sprites/msk_player/msk_player.yy",},},

@@ -3,16 +3,32 @@ if (!init) {
 	switch(type) {
 		case HType.BUSH_SMALL:
 			hp = 1;
+			minToolLevel = 0;
 		break;
 		case HType.GRASS:
 			hp = 1;
+			minToolLevel = 0;
 		break;
-		case HType.ROCK_SMALL:
-			hp = 3;
+		case HType.ROCK_SMALL:		
+			hp = 4;
+			minToolLevel = 0;
 		break;
 		case HType.WOOD_SMALL:
-			hp = 3;
+			hp = 4;
+			minToolLevel = 0;
 		break;
+		case HType.ROCK_BIG:
+			hp = 10;
+			minToolLevel = 2;
+		break;
+		case HType.WOOD_BIG:
+			hp = 10;
+			minToolLevel = 2;
+		break;
+		case HType.BUSH_BIG:
+			hp = 10;
+			minToolLevel = 2;
+		break;		
 	}
 }
 

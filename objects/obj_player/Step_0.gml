@@ -112,6 +112,7 @@ if (has_flag(state, PS.USE_TOOL)) {
 	
 	if (toolState == ToolState.BEGIN) {
 		_a.f_cur = 0;
+		toolBounced = false;
 		if (toolDelay == 0 && !k_action2) {
 			toolState = ToolState.DO;
 		}		
@@ -143,15 +144,21 @@ if (has_flag(state, PS.USE_TOOL)) {
 				if (instance_exists(_h) && _h.state == HState.IDLE) {
 					
 					if (_toolType == Tool.PICKAXE) {
-						// todo: check tool level
-						if ( _h.type == HType.ROCK_SMALL) {
-							_h.hitDamage = player_get_damage_for_tool(_toolType, _toolLevel);
+						if (has_flag(_h.type, HType.ROCK_SMALL | HType.ROCK_BIG)) {
+							if (_toolLevel >= _h.minToolLevel) {
+								_h.hitDamage = player_get_damage_for_tool(_toolType, _toolLevel);
+							} else {
+								toolBounced = true;
+							}
 						}
 					}
 					if (_toolType == Tool.AXE) {
-						// todo: check tool level
-						if (has_flag(_h.type, HType.WOOD_SMALL | HType.BUSH_SMALL)) {
-							_h.hitDamage = player_get_damage_for_tool(_toolType, _toolLevel);
+						if (has_flag(_h.type, HType.WOOD_SMALL | HType.WOOD_BIG)) {
+							if (_toolLevel >= _h.minToolLevel) {
+								_h.hitDamage = player_get_damage_for_tool(_toolType, _toolLevel);
+							} else {
+								toolBounced = true;
+							}
 						}
 					}
 				}
@@ -164,9 +171,15 @@ if (has_flag(state, PS.USE_TOOL)) {
 	}
 	
 	if (toolState == ToolState.END) {
-		if (toolDelay == 0) {		
-			state = PS.IDLE;
-			anim = animation_set_array(anim_idle);
+		if (toolBounced) {
+			state = PS.TOOL_BOUNCE;
+			anim = animation_set_array(anim_tool_bounce);
+			toolDelay = 30;			
+		} else {
+			if (toolDelay == 0) {		
+				state = PS.IDLE;
+				anim = animation_set_array(anim_idle);
+			}
 		}
 	}
 }
@@ -176,46 +189,67 @@ if (has_flag(state, PS.ATTACK)) {
 	yVel = 0;
 	var _a = animation_for_direction(anim, dir);
 	
-	if (toolState == ToolState.BEGIN) {		
+	if (toolState == ToolState.BEGIN) {
 		toolState = ToolState.DO;
+		toolBounced = false;
 		
-		
-			if (_toolType == Tool.SCYTHE) {
-				var _harvestables = player_get_harvestables_for_scythe(cx, cy, dir);
-				for (var _i = 0; _i < array_length(_harvestables); _i++) {
-					var _h = _harvestables[_i];
-					if (_h.type == HType.BUSH_SMALL || _h.type == HType.GRASS) {
+		if (_toolType == Tool.SCYTHE) {
+			var _harvestables = player_get_harvestables_for_scythe(cx, cy, dir);
+			for (var _i = 0; _i < array_length(_harvestables); _i++) {
+				var _h = _harvestables[_i];
+				if (has_flag(_h.type, HType.BUSH_SMALL | HType.GRASS | HType.BUSH_BIG)) {
+					if (_toolLevel >= _h.minToolLevel) {
 						_h.hitDamage = player_get_damage_for_tool(_toolType, _toolLevel);
+					} else {
+						// no bouncing with scythe or sword
 					}
 				}
 			}
+		}
 			
-			if (_toolType == Tool.SWORD) {
-				var _harvestables = player_get_harvestables_for_sword(cx, cy, dir);
+		if (_toolType == Tool.SWORD) {
+			var _harvestables = player_get_harvestables_for_sword(cx, cy, dir);
 
-				for (var _i = 0; _i < array_length(_harvestables); _i++) {
-					var _h = _harvestables[_i];
-					if (_h.type == HType.BUSH_SMALL || _h.type == HType.GRASS) {
+			for (var _i = 0; _i < array_length(_harvestables); _i++) {
+				var _h = _harvestables[_i];
+				if (has_flag(_h.type, HType.BUSH_SMALL | HType.GRASS | HType.BUSH_BIG)) {
+					if (_toolLevel >= _h.minToolLevel) {
 						_h.hitDamage = player_get_damage_for_tool(_toolType, _toolLevel);
+					} else {
+						// no bouncing with scythe or sword
 					}
 				}
 			}
+		}
 	}
 	
 	if (toolState == ToolState.DO) {
 		if (animation_is_done(_a)) {
 			toolState = ToolState.END;
-			toolDelay = 0; // no delay
-			
-			
+			toolDelay = 0; // no delay			
 		}
 	}
 	
 	if (toolState == ToolState.END) {
-		if (toolDelay == 0) {
-			state = PS.IDLE;
-			anim = animation_set_array(anim_idle);
+		if (toolBounced) {
+			state = PS.TOOL_BOUNCE;
+			anim = animation_set_array(anim_tool_bounce);
+			toolDelay = 60;
+		} else {
+			if (toolDelay == 0) {
+				state = PS.IDLE;
+				anim = animation_set_array(anim_idle);
+			}
 		}
+	}
+}
+
+if (state == PS.TOOL_BOUNCE) {
+	xVel = 0;
+	yVel = 0;
+	if (toolDelay == 0) {
+		state = PS.IDLE;
+		anim = animation_set_array(anim_idle);
 	}
 }
 

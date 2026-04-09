@@ -11,5 +11,10 @@ function create_harvestable(_x, _y, _hType, _tile) {
 		case HType.WOOD_SMALL:
 			_obj.mask_index = msk_16x16;
 		break;
+		case HType.BUSH_BIG:
+		case HType.WOOD_BIG:
+		case HType.ROCK_BIG:
+			_obj.mask_index = msk_32x32;
+		break;
 	}
 }

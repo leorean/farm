@@ -340,6 +340,18 @@
         {
          "id":1287,
          "type":"grass"
+        }, 
+        {
+         "id":1344,
+         "type":"rock_big"
+        }, 
+        {
+         "id":1348,
+         "type":"bush_big"
+        }, 
+        {
+         "id":1352,
+         "type":"wood_big"
         }],
  "tilewidth":8,
  "type":"tileset",

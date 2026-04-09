@@ -8,7 +8,7 @@ animation_draw(_a, dir == RIGHT ? -1 : 1, 1);
 //draw_rectangle(target_tile_x, target_tile_y, target_tile_x + TT, target_tile_y + 16, 1);
 
 
-if (has_flag(state, PS.USE_TOOL | PS.ATTACK)) {
+if (has_flag(state, PS.USE_TOOL | PS.ATTACK | PS.TOOL_BOUNCE)) {
 	var _tx = 0;
 	var _ty = 0;
 	var _xo = 0;
@@ -18,7 +18,7 @@ if (has_flag(state, PS.USE_TOOL | PS.ATTACK)) {
 	if (dir == UP) _ty = 1;
 	if (dir == LEFT || dir == RIGHT) _ty = 2;
 	
-	_tx = _a.f_frame;	
+	_tx = _a.f_frame;
 	
 	// special offsets for sword
 	if (tools[toolIndex].type == Tool.SWORD) {		

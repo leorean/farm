@@ -19,6 +19,7 @@ enum PS {
 	WALK_CARRY =	1 << 6,
 	SELECT_TOOL =	1 << 7,
 	GOT_ITEM =		1 << 8,
+	TOOL_BOUNCE =	1 << 9,
 }
 
 enum ToolState {
@@ -54,6 +55,7 @@ push_power = 0;
 carry_obj = noone;
 
 toolDelay = 0;
+toolBounced = false;
 
 // TT precision
 target_tile_x = 0;
@@ -63,8 +65,8 @@ tools = [
 	{type: Tool.HAND, level: 0},
 	{type: Tool.HOE, level: 0},
 	{type: Tool.WATERING_CAN, level: 1},
-	{type: Tool.AXE, level: 2},
-	{type: Tool.PICKAXE, level: 3},
+	{type: Tool.AXE, level: 1},
+	{type: Tool.PICKAXE, level: 1},
 	{type: Tool.SEED_BAG, level: 0},
 	{type: Tool.SCYTHE, level: 0},
 	{type: Tool.SWORD, level: 3}
@@ -83,5 +85,6 @@ anim_idle_carry =	animation_create_directions(spr_player, 15, 1, .05, false, 24,
 anim_walk_carry =	animation_create_directions(spr_player, 16, 4, .15, true, 24, 24);
 anim_select_tool =	animation_create_directions(spr_player, 20, 1, 0, false, 24, 24);
 anim_got_item =		animation_create_directions(spr_player, 21, 1, 0, false, 24, 24);
+anim_tool_bounce =	animation_create_directions(spr_player, 22, 1, 0, false, 24, 24);
 
 anim = anim_idle;
