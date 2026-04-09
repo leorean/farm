@@ -12,8 +12,8 @@ function player_check_collision(_self, _x_off, _y_off) {
 	}
 	
 	var _harvestable = collision_rectangle(bbox_left + _x_off, bbox_top + _y_off, bbox_right + _x_off, bbox_bottom + _y_off, obj_harvestable, false, true);
-	if (instance_exists(_harvestable) && _harvestable.state == HarvestableState.IDLE) {
-		if (_harvestable.type != HarvestableType.GRASS) {
+	if (instance_exists(_harvestable) && _harvestable.state == HState.IDLE) {
+		if (_harvestable.type != HType.GRASS) {
 			return true;
 		}
 	}

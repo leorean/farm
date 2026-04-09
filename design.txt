@@ -9,6 +9,7 @@ x instead of post-draw, draw in draw method
 * randomize object generation on farm
 * tool hold to power-up and release
 
+* inventory management
 * extra state/animation for filling watering can
 * extra state/animation for sowing
 * chests

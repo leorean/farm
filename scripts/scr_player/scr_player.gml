@@ -26,7 +26,7 @@ function player_get_harvestables_for_sword(_x, _y, _dir) {
 		for (var _j = 0; _j < _count; _j++) {
 			var _h = _list[| _j];
 			if (!instance_exists(_h)) continue;
-			if (_h.state != HarvestableState.IDLE) continue;
+			if (_h.state != HState.IDLE) continue;
 
 			var _key = string(_h);
 			if (!ds_map_exists(_seen, _key)) {
@@ -69,7 +69,7 @@ function player_get_harvestables_for_scythe(_x, _y, _dir) {
 		for (var _j = 0; _j < _count; _j++) {
 			var _h = _list[| _j];
 			if (!instance_exists(_h)) continue;
-			if (_h.state != HarvestableState.IDLE) continue;
+			if (_h.state != HState.IDLE) continue;
 
 			var _key = string(_h);
 			if (!ds_map_exists(_seen, _key)) {
@@ -82,4 +82,30 @@ function player_get_harvestables_for_scythe(_x, _y, _dir) {
 	}
 	ds_map_destroy(_seen);
 	return _harvestables;
+}
+
+function player_get_damage_for_tool(_t, _level) {
+	switch(_t) {
+		case Tool.AXE:
+			if (_level == 0) return 1;
+			if (_level == 1) return 2;
+			if (_level == 2) return 3;
+			if (_level == 3) return 4;
+		break;
+		case Tool.PICKAXE:
+			if (_level == 0) return 1;
+			if (_level == 1) return 2;
+			if (_level == 2) return 3;
+			if (_level == 3) return 4;
+		break;
+		case Tool.SWORD:
+			if (_level == 0) return 1;
+			if (_level == 1) return 2;
+			if (_level == 2) return 3;
+			if (_level == 3) return 4;
+		break;
+		default:
+			return 1;
+	}
+	throw string("Level not {0} implemented for tool {1}", _level, _t);
 }

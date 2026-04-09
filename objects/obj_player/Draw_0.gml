@@ -21,7 +21,7 @@ if (has_flag(state, PS.USE_TOOL | PS.ATTACK)) {
 	_tx = _a.f_frame;	
 	
 	// special offsets for sword
-	if (tools[toolIndex] == Tool.SWORD) {		
+	if (tools[toolIndex].type == Tool.SWORD) {		
 		if (dir == UP || dir == DOWN) {
 			if (_a.f_frame == 0) {
 				_xo = -sign(dir) * 4;
@@ -53,8 +53,9 @@ if (has_flag(state, PS.USE_TOOL | PS.ATTACK)) {
 		}
 	}
 	
-	var _ti = tools[toolIndex] - 1; // -1 because hand is at 0, and has no sprites
-	draw_sprite_part_ext(spr_tools, -1, _tx * 32 + _ti * 128, _ty * 32, 32, 32, x - 16 + (dir == RIGHT) * 32 + _xo, y - 16 + _yo, dir == RIGHT ? -1 : 1, 1, c_white, 1);
+	var _ti = tools[toolIndex].type - 1; // -1 because hand is at 0, and has no sprites
+	var _tl = tools[toolIndex].level;
+	draw_sprite_part_ext(spr_tools, -1, _tx * 32 + _ti * 128, _ty * 32 + _tl * 96, 32, 32, x - 16 + (dir == RIGHT) * 32 + _xo, y - 16 + _yo, dir == RIGHT ? -1 : 1, 1, c_white, 1);
 }
 
 //draw_point(cx,cy);

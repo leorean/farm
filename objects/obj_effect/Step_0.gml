@@ -2,6 +2,8 @@ switch(type) {
 	case ET.BUSH_SMALL_DESTROY:
 	case ET.ROCK_SMALL_DESTROY:
 	case ET.WOOD_SMALL_DESTROY:
+	case ET.STARS_GROUND:
+	case ET.STARS:
 		f_speed = .3;
 	break;
 	case ET.GRASS_DESTROY:

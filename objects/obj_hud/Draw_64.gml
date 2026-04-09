@@ -1,9 +1,12 @@
 draw_set_colour(c_white);
 draw_set_font(global.font_10x10_hud);
 
+draw_sprite_part(spr_hud, -1, 0, 64, 256, 16, 0, 0);
+
 // tool display
-var _tool = obj_player.tools[obj_player.toolIndex];
-draw_sprite_part(spr_hud, -1, _tool * 16, 0, 16, 16, 0, V_HEIGHT - 16);
+var _toolType = obj_player.tools[obj_player.toolIndex].type;
+var _toolLevel = obj_player.tools[obj_player.toolIndex].level;
+draw_sprite_part(spr_hud, -1, _toolType * 16, _toolLevel * 16, 16, 16, 0, 0);
 
 // daytime
 draw_set_halign(fa_right);

@@ -60,14 +60,14 @@ target_tile_x = 0;
 target_tile_y = 0;
 
 tools = [
-	Tool.HAND,
-	Tool.HOE,
-	Tool.WATERING_CAN,
-	Tool.AXE,
-	Tool.PICKAXE,
-	Tool.SEED_BAG,
-	Tool.SCYTHE,
-	Tool.SWORD
+	{type: Tool.HAND, level: 0},
+	{type: Tool.HOE, level: 0},
+	{type: Tool.WATERING_CAN, level: 1},
+	{type: Tool.AXE, level: 2},
+	{type: Tool.PICKAXE, level: 3},
+	{type: Tool.SEED_BAG, level: 0},
+	{type: Tool.SCYTHE, level: 0},
+	{type: Tool.SWORD, level: 3}
 ];
 toolIndex = 7;
 

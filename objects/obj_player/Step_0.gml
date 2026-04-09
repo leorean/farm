@@ -68,7 +68,8 @@ target_tile_x = ((x + _xo) div TT) * TT + sign(dir) * (dir == LEFT || dir == RIG
 target_tile_y = ((y + _yo) div TT) * TT + sign(dir) * (dir == UP || dir == DOWN) * TT;
 var _xt = target_tile_x;
 var _yt = target_tile_y;
-var _toolType = tools[toolIndex];
+var _toolType = tools[toolIndex].type;
+var _toolLevel = tools[toolIndex].level;
 
 toolDelay = max(toolDelay - 1, 0);
 
@@ -137,20 +138,20 @@ if (has_flag(state, PS.USE_TOOL)) {
 			if (_toolType == Tool.PICKAXE || _toolType == Tool.AXE) {
 				var _dx = (dir == LEFT || dir == RIGHT) ? cx + sign(dir) * 16 : cx;
 				var _dy = (dir == UP || dir == DOWN) ? cy + sign(dir) * 16 : cy;
-				var _harvestable = instance_place(_dx, _dy, obj_harvestable);
+				var _h = instance_place(_dx, _dy, obj_harvestable);
 				
-				if (instance_exists(_harvestable) && _harvestable.state == HarvestableState.IDLE) {
+				if (instance_exists(_h) && _h.state == HState.IDLE) {
 					
 					if (_toolType == Tool.PICKAXE) {
 						// todo: check tool level
-						if ( _harvestable.type == HarvestableType.ROCK_SMALL) {
-							_harvestable.state = HarvestableState.DESTROY;
+						if ( _h.type == HType.ROCK_SMALL) {
+							_h.hitDamage = player_get_damage_for_tool(_toolType, _toolLevel);
 						}
 					}
 					if (_toolType == Tool.AXE) {
 						// todo: check tool level
-						if ( _harvestable.type == HarvestableType.WOOD_SMALL) {
-							_harvestable.state = HarvestableState.DESTROY;
+						if (has_flag(_h.type, HType.WOOD_SMALL | HType.BUSH_SMALL)) {
+							_h.hitDamage = player_get_damage_for_tool(_toolType, _toolLevel);
 						}
 					}
 				}
@@ -183,8 +184,8 @@ if (has_flag(state, PS.ATTACK)) {
 				var _harvestables = player_get_harvestables_for_scythe(cx, cy, dir);
 				for (var _i = 0; _i < array_length(_harvestables); _i++) {
 					var _h = _harvestables[_i];
-					if (_h.type == HarvestableType.BUSH_SMALL || _h.type == HarvestableType.GRASS) {
-						_h.state = HarvestableState.DESTROY;
+					if (_h.type == HType.BUSH_SMALL || _h.type == HType.GRASS) {
+						_h.hitDamage = player_get_damage_for_tool(_toolType, _toolLevel);
 					}
 				}
 			}
@@ -194,8 +195,8 @@ if (has_flag(state, PS.ATTACK)) {
 
 				for (var _i = 0; _i < array_length(_harvestables); _i++) {
 					var _h = _harvestables[_i];
-					if (_h.type == HarvestableType.BUSH_SMALL || _h.type == HarvestableType.GRASS) {
-						_h.state = HarvestableState.DESTROY;
+					if (_h.type == HType.BUSH_SMALL || _h.type == HType.GRASS) {
+						_h.hitDamage = player_get_damage_for_tool(_toolType, _toolLevel);
 					}
 				}
 			}

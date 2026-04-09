@@ -1,4 +1,4 @@
-enum HarvestableType {
+enum HType {
 	GRASS =			1 << 0,
 	BUSH_SMALL =	1 << 1,
 	ROCK_SMALL =	1 << 2,
@@ -8,7 +8,7 @@ enum HarvestableType {
 	WOOD_BIG =		1 << 6
 }
 
-enum HarvestableState {
+enum HState {
 	IDLE,
 	CARRY,
 	DESTROY
@@ -16,4 +16,7 @@ enum HarvestableState {
 
 tile = -1;
 type = -1;
-state = HarvestableState.IDLE;
+state = HState.IDLE;
+hp = 1;
+init = false;
+hitDamage = 0;
